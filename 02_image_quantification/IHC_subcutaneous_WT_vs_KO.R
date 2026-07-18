@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Read subcutaneous-tumour immunostaining quantifications and compare wild-type versus Meflin-knockout (LMM-based analysis and plots). Shares the input workbook with the Am80 IHC scripts.
-# Figure(s)  : Subcutaneous IHC panels, WT vs Meflin-/- (Fig. 5/6; verify against final legends).
+# Figure(s)  : Figure 6E-H (subcutaneous IHC box plots, WT vs Meflin-/-).
 # Input      : data/subcutaneous_IHC_data.xlsx.
 # Output     : output/2026.06.13_KO_quantification.pdf.
 #

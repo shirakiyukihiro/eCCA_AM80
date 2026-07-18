@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Read subcutaneous-tumour immunostaining quantifications for the Am80 + chemotherapy arms (LMM-based analysis and plots). Shares the input workbook with the WT-vs-KO and Am80/PD-L1 IHC scripts.
-# Figure(s)  : Subcutaneous IHC panels, Am80 + chemotherapy (Fig. 5/6; verify against final legends).
+# Figure(s)  : Figure 7E-J (subcutaneous IHC box plots, Am80 + chemotherapy).
 # Input      : data/subcutaneous_IHC_data.xlsx.
 # Output     : output/2026.06.13_AM80Chemo_subcutaneous_IHC.pdf.
 #

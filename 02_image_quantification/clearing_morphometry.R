@@ -6,8 +6,18 @@
 #              cholangiocarcinoma (Meflin/ISLR).
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
-# Purpose    : Read Imaris-derived per-cell morphometry (elongation index and sphericity) of lineage-traced cells and compare stromal vs biliary compartments.
-# Figure(s)  : 3D morphometry panel (elongation index / sphericity; verify figure number against final legends).
+# Purpose    : Read Imaris-derived per-cell morphometry (elongation index and
+#              sphericity) of lineage-traced cells, compare stromal vs biliary
+#              compartments (Mann-Whitney U test, descriptive), and plot.
+# Figure(s)  : Figure 2E (elongation index and sphericity, biliary vs stromal).
+#
+# STATISTICS NOTE
+#   Cells were sampled from multiple regions of one representative cleared
+#   specimen. The elongation index and sphericity capture within-sample,
+#   cell-to-cell variation. Compartments (biliary vs stromal) are compared
+#   with the Mann-Whitney U test (wilcox.test), and the result is
+#   interpreted DESCRIPTIVELY rather than as a between-animal inference
+#   (single specimen). The elongation index is shown on a log scale.
 # Input      : data/clearing_morphometry.xlsx.
 # Output     : output/2026.06.03_Elongation_Sphericity.pdf.
 #
@@ -104,6 +114,25 @@ p1 <- ggplot()+
 
 p1+
   scale_y_log10()
+
+##################################################
+# Statistics: Mann-Whitney U test (descriptive; single specimen)
+##################################################
+# Compare biliary vs stromal for each morphometric measure. Interpreted
+# descriptively (cells from one representative specimen), consistent with
+# the Statistics section of the manuscript. p-values are annotated on the
+# final figure.
+
+p_elong <- wilcox.test(`Elongation Index` ~ area, data = df)$p.value
+p_spher <- wilcox.test(Sphericity      ~ area, data = df)$p.value
+
+cat("\n================ Fig 2E  Mann-Whitney U test (descriptive) ================\n")
+cat(sprintf("Elongation Index : biliary vs stromal, p = %.4g\n", p_elong))
+cat(sprintf("Sphericity       : biliary vs stromal, p = %.4g\n", p_spher))
+cat(sprintf("n cells: biliary = %d, stromal = %d\n",
+            sum(df$area == "Biliary"), sum(df$area == "Stromal")))
+cat("(single representative specimen; interpreted descriptively)\n")
+cat("===========================================================================\n")
 ##################################################
 # Sphericity
 ##################################################

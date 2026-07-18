@@ -7,9 +7,9 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Read ISH signal-intensity quantifications for Islr (Meflin) and Thy1 in the normal versus bile-duct-ligation (cholangitis) model and generate the comparison plots.
-# Figure(s)  : ISH Islr/Thy1 panels (Fig. 2B/D; verify against final legends).
+# Figure(s)  : Figure 3B and 3D (Islr and Thy1 ISH, normal vs BDL).
 # Input      : data/ISH_Islr_Thy1.xlsx.
-# Output     : output/2026.06.22_Fig2bd_Islr_Thy1.pdf.
+# Output     : output/Fig3BD_Islr_Thy1.pdf.
 #
 # Paths have been made relative for public release: place input files
 # in ./data and write outputs to ./output (create these folders, or edit
@@ -162,7 +162,7 @@ combined
 
 
 ggsave(
-  filename = "output/2026.06.22_Fig2bd_Islr_Thy1.pdf",
+  filename = "output/Fig3BD_Islr_Thy1.pdf",
   plot = combined,
   width = 180,
   height = 60,

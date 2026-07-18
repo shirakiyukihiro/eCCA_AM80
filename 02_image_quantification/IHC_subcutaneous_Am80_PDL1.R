@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Read subcutaneous-tumour immunostaining quantifications for the Am80 + anti-PD-L1 arms (LMM-based analysis and plots). Shares the input workbook with the WT-vs-KO and Am80/chemo IHC scripts.
-# Figure(s)  : Subcutaneous IHC panels, Am80 + anti-PD-L1 (Fig. 5/6; verify against final legends).
+# Figure(s)  : Figure 8C-L (subcutaneous IHC box plots, Am80 + anti-PD-L1).
 # Input      : data/subcutaneous_IHC_data.xlsx.
 # Output     : output/2026.06.13_AM80_PDL1_analysis.pdf.
 #

@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Merge and summarise lineage-tracing quantifications in the orthotopic (implantation of tumour fragments; IoTB) model across imaged fields.
-# Figure(s)  : IoTB lineage-tracing panels (Fig. 4; verify against final legends).
+# Figure(s)  : Figure 4E (Col1a1, Pdgfrb, Acta2 among tdTomato+ Meflin-lineage cells; descriptive).
 # Input      : data/IoTB_summary.xlsx.
 # Output     : output/2026.06.10_IoTB_merge.pdf.
 #

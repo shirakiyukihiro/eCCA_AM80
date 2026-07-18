@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Merge and summarise Cre double-labelling (co-expression) quantifications across imaged fields.
-# Figure(s)  : Lineage-tracing co-expression panels (verify figure number against final legends).
+# Figure(s)  : Figure 3H (Col1a1, Pdgfrb, Acta2 among tdTomato+ Meflin-lineage cells; descriptive).
 # Input      : data/lineage_tracing_Cre_double.xlsx.
 # Output     : output/2026.06.08_BDL_merge.pdf.
 #
