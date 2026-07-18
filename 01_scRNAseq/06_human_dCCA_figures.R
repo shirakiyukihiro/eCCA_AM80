@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Load the Harmony-integrated human dCCA Seurat object and the fibroblast subset, and generate the manuscript UMAP / feature / violin figures.
-# Figure(s)  : Human scRNA-seq panels (Fig. 5 and related supplementary figures).
+# Figure(s)  : Human scRNA-seq panels (Figure 5F-H and related supplementary figures).
 # Input      : data/human_dCCA_scRNAseq/*.harmony.rds and *fibrosubset.rds.
 # Output     : Human scRNA-seq figure panels.
 #

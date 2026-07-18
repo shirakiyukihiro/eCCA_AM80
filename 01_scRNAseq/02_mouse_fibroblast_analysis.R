@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Read the GSE163777 10x matrices, build the Seurat object, extract fibroblasts (excluding Lrat+ HSCs), cluster, and run monocle3/Slingshot-style pseudotime and marker analysis.
-# Figure(s)  : Mouse scRNA-seq panels (Fig. 3 and related supplementary figures).
+# Figure(s)  : Mouse scRNA-seq panels (Figure 5A-E and related supplementary figures).
 # Input      : data/GSE163777/ (GSM4987107 matrices).
 # Output     : Seurat/monocle objects and plots (mouse fibroblast clusters, pseudotime).
 #

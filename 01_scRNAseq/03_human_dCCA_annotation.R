@@ -7,7 +7,7 @@
 # Repository : eCCA_AM80  (https://github.com/shirakiyukihiro/eCCA_AM80)
 #
 # Purpose    : Load the human distal cholangiocarcinoma (dCCA) Seurat object and annotate cell types with canonical markers (feature/violin plots).
-# Figure(s)  : Human scRNA-seq panels (Fig. 5 and related supplementary figures).
+# Figure(s)  : Human scRNA-seq panels (Figure 5F-H and related supplementary figures).
 # Input      : data/human_dCCA_scRNAseq/ (Seurat .rds).
 # Output     : Annotation feature/violin plots.
 #
