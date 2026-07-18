@@ -9,22 +9,24 @@ extrahepatic cholangiocarcinoma, eCCA).
 
 ```
 eCCA_AM80/
+├── 00_plot_style.R              R — shared house style (box + beeswarm + p) for quantification figures
 ├── 01_scRNAseq/                 R — single-cell RNA-seq (mouse & human dCCA)
 │   ├── 01_download_GSE163777.R                  Download mouse scRNA-seq (GEO GSE163777)
-│   ├── 02_mouse_fibroblast_analysis.R           Mouse fibroblast Seurat + pseudotime
+│   ├── 02_mouse_fibroblast_analysis.R           Mouse fibroblast Seurat + pseudotime (Figure 5A-E)
 │   ├── 03_human_dCCA_annotation.R               Human dCCA cell-type annotation
 │   ├── 04_human_dCCA_export_preCellBender_h5.R  Export .h5 for CellBender
 │   ├── 04b_cellbender_remove_background.sh      CellBender ambient-RNA removal (per-sample params)
 │   ├── 05_human_dCCA_postCellBender.R           Post-CellBender import & processing
-│   └── 06_human_dCCA_figures.R                  Human dCCA UMAP / feature / violin figures
+│   └── 06_human_dCCA_figures.R                  Human dCCA UMAP / feature / violin figures (Figure 5F-H)
 ├── 02_image_quantification/     R — histology / ISH / IHC / morphometry quantification
-│   ├── clearing_morphometry.R                   3D-clearing morphometry (elongation/sphericity)
-│   ├── ISH_Islr_Thy1.R                          ISH Islr/Thy1 (normal vs bile duct ligation)
-│   ├── lineage_tracing_Cre_double.R             Cre double-labelling quantification
-│   ├── IoTB_lineage_tracing.R                   Orthotopic (IoTB) lineage tracing
-│   ├── IHC_subcutaneous_WT_vs_KO.R              Subcutaneous IHC: WT vs Meflin-/-
-│   ├── IHC_subcutaneous_Am80_chemo.R            Subcutaneous IHC: Am80 + chemotherapy
-│   └── IHC_subcutaneous_Am80_PDL1.R             Subcutaneous IHC: Am80 + anti-PD-L1
+│   ├── Fig1_DE.R                                Figure 1D/1E: Meflin/Thy1 composition & co-expression (paired t-test)
+│   ├── clearing_morphometry.R                   Figure 2E: 3D-clearing morphometry, elongation/sphericity (Mann-Whitney)
+│   ├── ISH_Islr_Thy1.R                          Figure 3B/D: ISH Islr/Thy1 (normal vs bile duct ligation; LMM)
+│   ├── lineage_tracing_Cre_double.R             Figure 3H: Cre double-labelling co-expression (descriptive)
+│   ├── IoTB_lineage_tracing.R                   Figure 4E: orthotopic (IoTB) lineage-tracing co-expression (descriptive)
+│   ├── IHC_subcutaneous_WT_vs_KO.R              Figure 6E-H: subcutaneous IHC, WT vs Meflin-/- (LMM)
+│   ├── IHC_subcutaneous_Am80_chemo.R            Figure 7E-J: subcutaneous IHC, Am80 + chemotherapy (LMM)
+│   └── IHC_subcutaneous_Am80_PDL1.R             Figure 8C-L: subcutaneous IHC, Am80 + anti-PD-L1 (LMM)
 ├── 03_invivo_tumour/            R — in vivo tumour growth / body weight / endpoint volume
 │   ├── Fig6_subcutaneous_WT_vs_KO.R             Figure 6B/C/D
 │   ├── Fig7_Am80_chemotherapy.R                 Figure 7B/C/D
@@ -41,10 +43,11 @@ eCCA_AM80/
 │   ├── figure_4G_kde_map.py                     (3) renders the published Fig. 4G panel
 │   ├── test_deconvolution_middle_zone.py        Validation: deconvolution test (uniform zone)
 │   ├── test_deconvolution_deep_zone.py          Validation: deconvolution test (deep zone)
-│   ├── publication_figures.py                   Supporting validation figures (not manuscript figures)
 │   ├── README_3D.md                             Detailed 3D-analysis notes
 │   └── environment.yml, requirements.txt        Python environment
 ├── data/
+│   ├── Fig1_data.csv            Per-field Meflin/Thy1 ISH counts (Figure 1D/1E)
+│   ├── *.xlsx                   Quantification workbooks (image / in vivo)
 │   └── mask_polygons/           Region masks (JSON; per-Z polygons, world µm coordinates)
 └── output/                      Figures and tables are written here
 ```
@@ -63,9 +66,11 @@ CellBender (GPU, Singularity) on the seven human dCCA samples; the per-sample pa
 reported in the manuscript are listed there.
 
 ### Image quantification / in vivo (02, 03)
-Independent scripts; each reads one Excel workbook from `data/`. `IHC_subcutaneous_WT_vs_KO.R`,
-`IHC_subcutaneous_Am80_chemo.R`, and `IHC_subcutaneous_Am80_PDL1.R` share the same
-subcutaneous-IHC workbook and analyse different comparison groups.
+Independent scripts; each reads one data file from `data/`. `Fig1_DE.R` reads
+`data/Fig1_data.csv` and sources `00_plot_style.R` (shared box + beeswarm style).
+`IHC_subcutaneous_WT_vs_KO.R`, `IHC_subcutaneous_Am80_chemo.R`, and
+`IHC_subcutaneous_Am80_PDL1.R` share the same subcutaneous-IHC workbook and
+analyse different comparison groups.
 
 ### 3D spatial / clonal analysis (05) — execution order
 1. `detect_cells_DoG.py` — detects Meflin-lineage (tdTomato⁺) cells inside the region
@@ -77,8 +82,6 @@ subcutaneous-IHC workbook and analyse different comparison groups.
    points (XY projection), with 92nd- and 99th-percentile kernel-density contour lines
    enclosing the densest 8% and 1% of the mapped area. The DBSCAN clusters are reported as
    numbers in the Results text and are not drawn on the panel.
-   `publication_figures.py` produces additional validation figures (detection uniformity,
-   cluster statistics) that were used internally; these are not manuscript figures.
 4. `test_deconvolution_middle_zone.py` / `test_deconvolution_deep_zone.py` — optional
    validation: Richardson-Lucy deconvolution (Gaussian PSF, σ_z = 7.83 µm, σ_xy = 2.35 µm,
    10 iterations) applied to a sub-volume, with DoG detection re-run before and after.
