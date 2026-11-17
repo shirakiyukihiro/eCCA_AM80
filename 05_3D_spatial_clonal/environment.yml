@@ -1,0 +1,20 @@
+# Conda environment for the 3D spatial analysis pipeline.
+# Usage: conda env create -f environment.yml
+name: napari
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - napari>=0.7
+  - pyqt
+  - scikit-image>=0.22
+  - scikit-learn       # optional; _dbscan_fallback.py provides a fallback
+  - scipy>=1.11
+  - numpy>=1.26
+  - matplotlib>=3.8
+  - h5py
+  - pip
+  - pip:
+      - imaris-ims-file-reader
+      - napari-imaris-loader
+      - aicsimageio

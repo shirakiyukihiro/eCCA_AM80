@@ -1,0 +1,12 @@
+# pip-only requirements (alternative to environment.yml)
+napari>=0.7
+PyQt5
+scikit-image>=0.22
+scikit-learn
+scipy>=1.11
+numpy>=1.26
+matplotlib>=3.8
+h5py
+imaris-ims-file-reader
+napari-imaris-loader
+aicsimageio
